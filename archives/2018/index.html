@@ -97,7 +97,7 @@
     root: '/',
     scheme: 'Mist',
     version: '6.4.1',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
     fancybox: true,
     fastclick: true,
     lazyload: true,
@@ -119,20 +119,24 @@
 
 
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="不停地奔赴，寻找最初的梦想，才会不枉此生">
+<meta name="keywords" content="Eliden的个人博客">
+<meta property="og:type" content="website">
 <meta property="og:title" content="前~端~影">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+<meta property="og:url" content="https://eliden123.github.io/archives/2018/index.html">
 <meta property="og:site_name" content="前~端~影">
+<meta property="og:description" content="不停地奔赴，寻找最初的梦想，才会不枉此生">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前~端~影">
+<meta name="twitter:description" content="不停地奔赴，寻找最初的梦想，才会不枉此生">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/"/>
+  <link rel="canonical" href="https://eliden123.github.io/archives/2018/"/>
 
 
 
@@ -210,7 +214,7 @@
     </div>
     
       
-        <h1 class="site-subtitle" itemprop="description">111</h1>
+        <h1 class="site-subtitle" itemprop="description">不停地奔赴，寻找最初的梦想，才会不枉此生。</h1>
       
     
   </div>
@@ -230,14 +234,6 @@
   
     <ul id="menu" class="menu">
       
-        
-        
-        
-          
-          <li class="menu-item menu-item-首页">
-    <a href="/show" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
-  </li>
         
         
         
@@ -304,9 +300,6 @@
     
 
     
-    
-      
-      
     
       
       
@@ -804,6 +797,8 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -815,7 +810,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Eliden</p>
-              <p class="site-description motion-element" itemprop="description">111</p>
+              <p class="site-description motion-element" itemprop="description">不停地奔赴，寻找最初的梦想，才会不枉此生</p>
           </div>
 
           
@@ -873,12 +868,12 @@
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/yourname" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/eliden123" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
                   
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:eliden_geek@outlook.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   
                 </span>
               
@@ -990,8 +985,6 @@
 
 
 
-  
-
 
 
 
@@ -1032,11 +1025,6 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -1128,6 +1116,19 @@
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
       
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
 
       $.ajax({
         url: path,
@@ -1162,6 +1163,8 @@
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
                 
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
@@ -1407,6 +1410,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 
